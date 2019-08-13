@@ -1,6 +1,6 @@
 # Docker build and push
 
-This repo contains a workflow file.
+This repo contains a github actions workflow file; which when configured will help you achieve CI.
 
 # Prerequisites
 
