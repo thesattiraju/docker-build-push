@@ -1,6 +1,9 @@
 name: Docker Image CI
 
-on: [push]
+on:
+  push:
+    branches:
+    - master
 
 jobs:
 
@@ -17,7 +20,7 @@ jobs:
         username: ${{ secrets.username }} 
         password: ${{ secrets.password }} 
     
-    - name: Build the Docker image
+    - name: Build and push the Docker image
       run: |
         docker build . --tag sample-image:${{ github.sha }} 
         docker push sample-image:${{ github.sha }} 
