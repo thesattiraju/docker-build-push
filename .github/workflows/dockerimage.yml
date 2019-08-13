@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+
+  build:
+ 
+    runs-on: ubuntu-latest
+ 
+    steps:
+    - uses: actions/checkout@master
+    
+    - name: Docker login
+      uses: azure/container-actions/docker-login@master
+      with: 
+        username: ${{ secrets.username }} 
+        password: ${{ secrets.password }} 
+    
+    - name: Build the Docker image
+      run: |
+        docker build . --tag sample-image:${{ github.sha }} 
+        docker push sample-image:${{ github.sha }} 
